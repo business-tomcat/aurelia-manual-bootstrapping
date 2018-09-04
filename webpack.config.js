@@ -32,7 +32,8 @@ module.exports = ({production, server, extractCss, coverage} = {}) => ({
   },
   devtool: production ? 'source-map' : 'cheap-module-eval-source-map',
   entry: {
-    app: ['aurelia-bootstrapper'],
+    //app: ['aurelia-bootstrapper'],
+    app: ['src/main'],
     vendor: ['bluebird', 'jquery', 'bootstrap'],
   },
   output: {
