@@ -5,6 +5,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'babel-polyfill';
 import * as Bluebird from 'bluebird';
 
+//import {bootstrap} from 'aurelia-bootstrapper-webpack';
+import {bootstrap} from 'aurelia-bootstrapper';
+
 // remove out if you don't want a Promise polyfill (remove also from webpack.config.js)
 Bluebird.config({ warnings: { wForgottenReturn: false } });
 
@@ -26,13 +29,16 @@ export async function configure(aurelia) {
 }
 */
 
-import {bootstrap} from 'aurelia-bootstrapper-webpack';
+export async function configure(param) {
+  console.log('configure: ' + param);
+}
 
 bootstrap(async aurelia => {
+  console.log('bootstrapping');
   aurelia.use
     .standardConfiguration()
     .developmentLogging();
 
   await aurelia.start();
-  aurelia.setRoot('app', document.body);
+  aurelia.setRoot(PLATFORM.moduleName('app'), document.body);
 });
